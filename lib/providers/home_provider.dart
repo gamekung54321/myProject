@@ -89,6 +89,13 @@ class HomeProvider with ChangeNotifier {
     // totaldata[index] = statement;
     notifyListeners();
   }
+   void editNameWalletTotalData(String namewattle, String changename) async{
+     var db = TransactionDB(dbName: 'transactions.db');
+    await db.UpdateNameHomeData(namewattle, changename);
+    totaldata = await db.loadHomeData();
+    // totaldata[index] = statement;
+    notifyListeners();
+  }
   void editCate(List<CategoryModel> type, int indexcate){
     typeedit = type;
     cate[0].title = type[indexcate].title;

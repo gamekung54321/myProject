@@ -82,6 +82,19 @@ class TransactionDB {
     );
     db.close();
   }
+  Future UpdateNameHomeData(String namewattle, String changename) async {
+    var db = await this.openDatabase();
+    var store = intMapStoreFactory.store('totaldata');
+    final finder = Finder(filter: Filter.equals('titleWallet', namewattle));
+    await store.update(
+      db,
+      {
+        "titleWallet": changename,
+      },
+      finder: finder,
+    );
+    db.close();
+  }
 
   Future DeleteHomeData(int index) async {
     var db = await this.openDatabase();

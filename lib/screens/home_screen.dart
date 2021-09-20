@@ -251,7 +251,7 @@ Widget checkData(BuildContext context, HomeModel data, int index) {
             // รายการที่ 1
             Container(
               height: 60,
-              decoration: BoxDecoration(color: Colors.blue),
+              decoration: BoxDecoration(color: data.typeCategory == 'รายรับ' ? Colors.blue : Colors.red),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Stack(
@@ -303,7 +303,7 @@ Widget checkData(BuildContext context, HomeModel data, int index) {
             ),
             // รายรับ
             Container(
-              decoration: BoxDecoration(color: Colors.blue[100]),
+              decoration: BoxDecoration(color: Colors.grey[200] ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(

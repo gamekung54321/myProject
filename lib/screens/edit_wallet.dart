@@ -2,6 +2,7 @@ import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project_flutter_app/models/wallet_model.dart';
+import 'package:project_flutter_app/providers/home_provider.dart';
 import 'package:project_flutter_app/providers/wallet_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -165,6 +166,8 @@ class _editWalletState extends State<editWallet> {
                           var titile = _titlecontroller.text;
                           var amount = double.parse(_amountcontroller.text);
                           var indexlist = index;
+                          var namewattle = provider.wallets[indexlist].title;
+                          var homeprovider = Provider.of<HomeProvider>(context, listen: false);
                           double revenueWallet = double.parse(provider.wallets[indexlist].revenue.toString());
                           double expensesWallet = double.parse(provider.wallets[indexlist].expenses.toString());
                           WalletModel statement = WalletModel(
@@ -173,6 +176,7 @@ class _editWalletState extends State<editWallet> {
                             revenue: revenueWallet.toString(),
                             expenses: expensesWallet.toString(),
                           );
+                          homeprovider.editNameWalletTotalData(namewattle!, titile);
                           provider.editWallet(statement, int.parse(provider.wallets[indexlist].id.toString()));
                           Navigator.pop(context);
                         }
